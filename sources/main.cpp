@@ -11,10 +11,19 @@ void    file_input(int argc, char const *argv[]) {
             std::cout << buff << std::endl;
         }
     }
+    file.close();
 }
 
 void    terminal_input() {
+    std::string buff;
 
+    for (;;) {
+
+        std::cin >> buff;
+        std::cout << buff << std::endl;
+        if (buff == ";;")
+            break;
+    }
 }
 
 int     main(int argc, char const *argv[])
