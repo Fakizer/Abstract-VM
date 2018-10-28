@@ -1,3 +1,4 @@
+
 #include "AbstractVM.hpp"
 
 char const * AbstractVM::DivideByZero::what( void ) const _NOEXCEPT { 

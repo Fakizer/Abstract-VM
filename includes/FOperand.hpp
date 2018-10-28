@@ -9,6 +9,8 @@
     #  include "Operand.hpp"
 # endif
 
+# include <string>
+
 class FOperand {
 public:
 	typedef IOperand const * (FOperand::*IOPFP)(std::string const &) const;
