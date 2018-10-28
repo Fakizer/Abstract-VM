@@ -7,7 +7,7 @@ CC =				clang++ -std=c++11
 INC_DIR =			-I ./includes/
 
 SRC_DIR =			./sources/
-SRC_AVM =			*.cpp
+SRC_AVM =			main.cpp AbstractVM.cpp
 
 OBJ_DIR =			./objects/
 
