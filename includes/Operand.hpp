@@ -12,12 +12,6 @@
 # include <string>
 # include <limits>
 
-// enum eOperandType {Int8, Int16, Int32, Float, Double};
-
-//****************************
-// CLASS TEMPLATE DECLARATION
-//****************************
-
 template<class T> class Operand : public IOperand {
 public:
 	Operand( void );

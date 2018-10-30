@@ -38,7 +38,6 @@ IOperand const * FOperand::createOperand( eOperandType type, std::string const &
 		std::cout << "Value: ";
 		std::cout << value << std::endl;
 	} catch(std::exception & e) {
-		// std::cout << errno << ": " << strerror(errno) << std::endl << e.what() << std::endl;
 		throw AbstractVM::InvalidValue();
 	}
 	return created;

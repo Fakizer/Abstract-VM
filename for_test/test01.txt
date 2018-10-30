@@ -4,9 +4,12 @@ push int32(33)
 
 add ;poney
 
-push float(44.55)
+push int8(44)
+
+print
 
 mul
+
 
 push double(42.42)
 
@@ -19,5 +22,6 @@ dump
 pop
 
 assert double(42.42)
+
 
 exit

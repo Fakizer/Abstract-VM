@@ -12,10 +12,6 @@ Calculator::~Calculator( void ) {
 }
 
 Calculator & Calculator::operator=( Calculator const & rhs ) {
-	// IterStack<IOperand const*>::iterator i;
-	// IterStack<IOperand const*>::iterator end = this->stack.end();
-	// for (i = this->stack.begin(); i != end; i++) { delete &(*i); }
-	// for (i = rhs.stack.begin(); i != rhs.stack.end(); i++) { this->stack.push(factory.createOperand((*i)->getType(), (*i)->toString())); }
 	static_cast<void>(rhs);
 	return *this;
 }

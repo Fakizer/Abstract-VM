@@ -5,7 +5,7 @@
 
 # ifndef FOPERAND_HPP_DEFINED
     #  define FOPERAND_HPP_DEFINED
-    class OperandFactory;
+    class FOperand;
     #  include "Operand.hpp"
 # endif
 
@@ -20,6 +20,7 @@ public:
 	FOperand & operator=( FOperand const & rhs );
 
 	IOperand const * createOperand( eOperandType type, std::string const & value ) const;
+	
 private:
 	IOperand const * createInt8( std::string const & value ) const;
 	IOperand const * createInt16( std::string const & value ) const;
