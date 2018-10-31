@@ -2,4 +2,19 @@ push int16(32 ;)
 
 pu int(32))
 
+
+push int16(15)
+push int16(20)
+
+max
+
+push int8(20)
+
+max
+
+push int16(15)
+push int16(20)
+
+avg
+
 exit

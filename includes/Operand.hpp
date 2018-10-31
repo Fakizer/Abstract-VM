@@ -12,6 +12,7 @@
 # include <string>
 # include <limits>
 
+
 template<class T> class Operand : public IOperand {
 public:
 	Operand( void );
@@ -27,6 +28,11 @@ public:
 	IOperand const * operator*( IOperand const & rhs ) const; // Product
 	IOperand const * operator/( IOperand const & rhs ) const; // Quotient
 	IOperand const * operator%( IOperand const & rhs ) const; // Modulo
+	IOperand const * operator==( IOperand const & rhs ) const; // ==
+	IOperand const * operator<( IOperand const & rhs ) const; // Min
+    IOperand const * operator>( IOperand const & rhs ) const; // Max
+    IOperand const * operator/=( IOperand const & rhs ) const; // Avg
+    // IOperand const * operator^( IOperand const & rhs ) const; // Pow
 	std::string const & toString( void ) const; // String representation of the instance
 protected:
 	std::string _value;

@@ -40,3 +40,7 @@ char const * AbstractVM::Overflow::what( void ) const _NOEXCEPT {
 char const * AbstractVM::Underflow::what( void ) const _NOEXCEPT { 
     return "Underflow on a value"; 
 }
+
+char const * AbstractVM::EqlValue::what( void ) const _NOEXCEPT { 
+    return "Equal values"; 
+}

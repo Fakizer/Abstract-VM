@@ -14,6 +14,7 @@ struct AbstractVM {
 	struct AssertNotTrue : public std::exception { char const * what( void ) const _NOEXCEPT; };
 	struct Overflow : public std::exception { char const * what( void ) const _NOEXCEPT; };
 	struct Underflow : public std::exception { char const * what( void ) const _NOEXCEPT; };
+	struct EqlValue : public std::exception { char const * what( void ) const _NOEXCEPT; };
 };
 
 #endif

@@ -98,6 +98,66 @@ template<class T> IOperand const * Operand<T>::operator%( IOperand const & rhs )
 	return ret_val;
 }
 
+template<class T> IOperand const * Operand<T>::operator==( IOperand const & rhs ) const {
+	long lhs_value = stol(this->toString());
+	long rhs_value = stol(rhs.toString());
+	// if (rhs_value == 0) throw AbstractVM::DivideByZero();
+	eOperandType final_type = (this->getPrecision() < rhs.getPrecision() ? rhs.getType() : this->getType());
+	FOperand * factory = new FOperand();
+	IOperand const * ret_val = factory->createOperand(final_type, 
+			lhs_value == rhs_value ? std::to_string(1) : std::to_string(0));
+	delete factory;
+	return ret_val;
+}
+
+template<class T> IOperand const * Operand<T>::operator<( IOperand const & rhs ) const {
+	long lhs_value = stol(this->toString());
+	long rhs_value = stol(rhs.toString());
+	if (rhs_value == lhs_value) throw AbstractVM::EqlValue();
+	eOperandType final_type = (this->getPrecision() < rhs.getPrecision() ? rhs.getType() : this->getType());
+	FOperand * factory = new FOperand();
+	IOperand const * ret_val = factory->createOperand(final_type, 
+				lhs_value < rhs_value ? std::to_string(lhs_value) : std::to_string(rhs_value));
+	delete factory;
+	return ret_val;
+}
+
+template<class T> IOperand const * Operand<T>::operator>( IOperand const & rhs ) const {
+	long lhs_value = stol(this->toString());
+	long rhs_value = stol(rhs.toString());
+	if (rhs_value == lhs_value) throw AbstractVM::EqlValue();
+	eOperandType final_type = (this->getPrecision() < rhs.getPrecision() ? rhs.getType() : this->getType());
+	FOperand * factory = new FOperand();
+	IOperand const * ret_val = factory->createOperand(final_type, 
+				lhs_value > rhs_value ? std::to_string(lhs_value) : std::to_string(rhs_value));
+	delete factory;
+	return ret_val;
+}
+
+template<class T> IOperand const * Operand<T>::operator/=( IOperand const & rhs ) const {
+	
+	if (this->getPrecision() < rhs.getPrecision()) return (rhs + *this);
+	T lhs_value = static_cast<T>(stod(this->_value));
+	T rhs_value = static_cast<T>(stod(rhs.toString()));
+	add_flow_check<T>(lhs_value, rhs_value);
+	FOperand * factory = new FOperand();
+	IOperand const * ret_val = factory->createOperand(this->getType(), 
+					std::to_string(static_cast<T>(stod(this->_value)) + rhs_value));
+
+	rhs_value  = stod(ret_val->toString());
+	delete factory;
+	delete ret_val;
+
+	if (rhs_value == 0) throw AbstractVM::DivideByZero();
+	eOperandType final_type = ret_val->getType();
+	factory = new FOperand();
+	ret_val = factory->createOperand(final_type, std::to_string(rhs_value / 2));
+
+	delete factory;
+	return ret_val;
+
+}
+
 template<class T> std::string const & Operand<T>::toString( void ) const {
 	return this->_value;
 }

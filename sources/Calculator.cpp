@@ -17,7 +17,8 @@ Calculator & Calculator::operator=( Calculator const & rhs ) {
 }
 
 bool Calculator::call(std::string cmd) {
-	static const std::vector<std::string> ops = { "add", "sub", "mul", "div", "mod" };
+	static const std::vector<std::string> ops = { "add", "sub", "mul", "div", "mod" , "eql" ,
+													 "min" , "max" , "avg"};
 	static std::string names[] = { "int8", "int16", "int32", "float", "double" };
 	try {
 		if (cmd.find(';') != std::string::npos) cmd.erase(cmd.find(';'), std::string::npos);
@@ -42,6 +43,10 @@ bool Calculator::call(std::string cmd) {
 			else if (cmd == "mul") created = *lhs * *rhs;
 			else if (cmd == "div") created = *lhs / *rhs;
 			else if (cmd == "mod") created = *lhs % *rhs;
+			else if (cmd == "eql") created = *lhs == *rhs;
+			else if (cmd == "min") created = *lhs < *rhs;
+			else if (cmd == "max") created = *lhs > *rhs;
+			else if (cmd == "avg") created = *lhs /= *rhs;
 			else throw AbstractVM::UnknownOperation();
 			this->stack.push(created);
 			delete lhs;
